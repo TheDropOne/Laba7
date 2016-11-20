@@ -1,8 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,19 +29,24 @@ public class Runner {
             while (matcher.find()) {
                 listOfWords.add(matcher.group());
             }
-            for (String word : listOfWords) {
-                matcherFirst = patternFirstFile.matcher(word);
-                matcherSecond = patternSecondFile.matcher(word);
-                if(matcherFirst.matches()){
-                    listFirstTask.add(word);
-                }
-                if(matcherSecond.matches()){
-                    listSecondTask.add(word);
-                }
+        }
+        for (String word : listOfWords) {
+            matcherFirst = patternFirstFile.matcher(word);
+            matcherSecond = patternSecondFile.matcher(word);
+            if (matcherFirst.matches()) {
+                listFirstTask.add(word);
+            }
+            if (matcherSecond.matches()) {
+                listSecondTask.add(word);
             }
         }
-        Collections.sort(listFirstTask);
-        Collections.sort(listSecondTask);
+        Comparator<String> comparator = (o1, o2) -> {
+            if (o1.length() < o2.length()) return -1;
+            if (o1.length() > o2.length()) return 1;
+            return o1.compareTo(o2);
+        };
+        Collections.sort(listFirstTask, comparator);
+        Collections.sort(listSecondTask, comparator);
         writeToFile(OUTPUT1_FILE_NAME, listFirstTask.iterator());
         writeToFile(OUTPUT2_FILE_NAME, listSecondTask.iterator());
     }
