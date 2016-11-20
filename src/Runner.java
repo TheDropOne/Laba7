@@ -49,6 +49,8 @@ public class Runner {
         Collections.sort(listSecondTask, comparator);
         writeToFile(OUTPUT1_FILE_NAME, listFirstTask.iterator());
         writeToFile(OUTPUT2_FILE_NAME, listSecondTask.iterator());
+        System.out.println("Only digits lexemes : " + listFirstTask.size());
+        System.out.println("Without digits lexemes : " + listSecondTask.size());
     }
 
     private static List<String> readListOfStrings(String path) {
