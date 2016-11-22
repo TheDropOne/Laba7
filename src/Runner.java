@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 public class Runner {
 
     private static final String INPUT_FILE_NAME = "input.txt";
+    private static final String INPUT1_FILE_NAME = "input1.txt";
     private static final String OUTPUT1_FILE_NAME = "output1.txt";
     private static final String OUTPUT2_FILE_NAME = "output2.txt";
     private static final String DIVIDERS = "\\.,\\s;";
