@@ -41,11 +41,7 @@ public class Runner {
                 listSecondTask.add(word);
             }
         }
-        Comparator<String> comparator = (o1, o2) -> {
-            if (o1.length() < o2.length()) return -1;
-            if (o1.length() > o2.length()) return 1;
-            return o1.compareTo(o2);
-        };
+        Comparator<String> comparator = String::compareTo;
         Collections.sort(listFirstTask, comparator);
         Collections.sort(listSecondTask, comparator);
         writeToFile(OUTPUT1_FILE_NAME, listFirstTask.iterator());
